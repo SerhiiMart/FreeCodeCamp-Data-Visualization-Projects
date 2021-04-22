@@ -5,13 +5,13 @@ const svg = d3.select('svg');
 
 ////Global variables
 let dataValues = [];
-let xScale;
+
 let xAxissScale;
 let yAxissScale;
 
 const width = 700;
 const height = 500;
-const svgPadding = 40;
+const padding = 40;
 
 
 const dataChart = () => {
@@ -21,7 +21,9 @@ const dataChart = () => {
 
 let createScales = () => {
   let heighScl = d3.scaleLinear().domain([0, d3.max(dataValues, (e) => e[1])])
-  .range([0, height(2*svgPadding)])
+  .range([0, height(2*padding)])
+  let xScale = d3.scaleLinear().domain([0, dataValues.length - 1])
+  .range([padding, width - padding])
 }
 
 let createBars = () => {
