@@ -2,16 +2,15 @@ const request = new XMLHttpRequest();
 const dataset = "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json";
 const svg = d3.select('svg');
 
-const data 
-const dataValues
 
-const heighScl
-const xScale
-const xAxissScale
-const yAxissScale
+////Global variables
+let dataValues = [];
+let xScale;
+let xAxissScale;
+let yAxissScale;
 
-const width = 1000;
-const height = 800;
+const width = 700;
+const height = 500;
 const svgPadding = 40;
 
 
@@ -21,7 +20,8 @@ const dataChart = () => {
 };
 
 let createScales = () => {
-
+  let heighScl = d3.scaleLinear().domain([0, d3.max(dataValues, (e) => e[1])])
+  .range([0, height(2*svgPadding)])
 }
 
 let createBars = () => {
@@ -35,5 +35,12 @@ let createAxis = () => {
 
 request.open("GET", dataset, true);
 request.onload = () => {
-  console.log(request.responseText);
+ let data = JSON.parse(request.responseText);
+ dataValues = data.data;
+ console.log(dataValues);
+ dataChart();
+ createScales();
+ createBars();
+ createAxis();
 }
+request.send()
