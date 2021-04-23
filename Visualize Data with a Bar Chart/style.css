@@ -9,8 +9,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100%;
 }
 
 h1 {
@@ -19,4 +17,32 @@ h1 {
 
 svg {
   background-color: black;
+  padding: 10px;
+}
+
+.bar{
+  background-color: #2B7A78;
+  border-color: #2B7A78;
+  fill: #2B7A78;
+}
+
+.bar:hover{
+  fill: #17252A
+}
+
+g{
+  color: #bb3ae2
+}
+
+#tooltip{
+  position: absolute;			
+  text-align: center;			
+  width: 60px;					
+  height: auto;					
+  padding: 2px;				
+  font: 12px sans-serif;		
+  background: rgb(13, 13, 192);	
+  border: 0px;		
+  border-radius: 8px;			
+  pointer-events: none;
 }
