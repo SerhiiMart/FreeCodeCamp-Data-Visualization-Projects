@@ -4,45 +4,50 @@
   box-sizing: border-box;
 }
 
-.main {
+body{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(172, 170, 170);
 }
 
 h1 {
   text-align: center;
+  color: #000000;
+  font-weight: 900;
 }
 
 svg {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   padding: 10px;
+  border: 2px solid rgb(48, 26, 26);
+  box-shadow: 4px 4px 7px rgba(36, 34, 34, 0.5);
 }
 
 .bar{
-  background-color: #2B7A78;
+  background-color: #e2f81e;
   border-color: #2B7A78;
-  fill: #2B7A78;
+  fill: yellow;
 }
 
 .bar:hover{
-  fill: #17252A
+  fill: #cc0f9d;
 }
 
 g{
-  color: #bb3ae2
+  color: #bb3ae2;
 }
 
 #tooltip{
   position: absolute;			
   text-align: center;			
-  width: 60px;					
+  width: 120px;					
   height: auto;					
-  padding: 2px;				
+  padding: 3px;				
   font: 12px sans-serif;		
-  background: rgb(13, 13, 192);	
-  border: 0px;		
+  background: rgb(13, 13, 192);		
+  color: aliceblue;	
   border-radius: 8px;			
   pointer-events: none;
 }
