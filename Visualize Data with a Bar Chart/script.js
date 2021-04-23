@@ -9,7 +9,7 @@ let yAxisScale;
 let dataValues = [];
 const width = 700;
 const height = 500;
-const padding = 20;
+const padding = 50;
 
 
 const dataChart = () => {
@@ -31,18 +31,26 @@ const createScales = () => {
 
   yAxisScale = d3.scaleLinear().domain([0, d3.max(dataValues, (e) => {
                         return e[1]
-                    })]).range([height - padding, padding ])
+                    })]).range([height - padding, padding])
 }
 
 const createBars = () => {
-
+  svg.selectAll("rect").data(dataValues).enter().append('rect')
+    .attr('class', 'bar').attr('width', (width - (2 * padding)) / values.length)
+    .attr('data-date', (e) => {
+              return e[0];
+          })
 }
 
 const createAxis = () => {
   let xAxis = d3.axisBottom(xAxisScale);
-  svg.append('g').call(xAxis).attr("id","x-axis").attr("color", "white")
-  .attr("transform", "translate(0, " + (height-padding) + ")")
-  
+  svg.append('g').call(xAxis)
+    .attr("id","x-axis").attr("color", "white")
+    .attr("transform", "translate(0, " + (height-padding) + ")")
+  let yAxis = d3.axisLeft(yAxisScale);
+  svg.append('g').call(yAxis)
+    .attr("id", "y-axis").attr("color", "white")
+    .attr("transform", "translate(" + (padding)+ ", 0)")
 }
 
 
