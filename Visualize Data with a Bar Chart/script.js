@@ -4,10 +4,12 @@ const svg = d3.select('svg');
 
 
 ////Global variables
+let xAxisScale;
+let yAxisScale;
 let dataValues = [];
 const width = 700;
 const height = 500;
-const padding = 40;
+const padding = 20;
 
 
 const dataChart = () => {
@@ -17,16 +19,17 @@ const dataChart = () => {
 
 const createScales = () => {
   let heighScl = d3.scaleLinear().domain([0, d3.max(dataValues, (e) => e[1])])
-  .range([0, height - (2*padding)]);
+        .range([0, height - (2*padding)]);
   let xScale = d3.scaleLinear().domain([0, dataValues.length - 1])
-  .range([padding, width - padding]);
+        .range([padding, width - padding]);
   let dates = dataValues.map(e => {
     return new Date(e[0]);
   });
-  let xAxisScale = d3.scaleTime().domain([d3.min(dates), d3.max(dates)])
+  console.log(dates);
+   xAxisScale = d3.scaleTime().domain([d3.min(dates), d3.max(dates)])
                     .range([padding, width-padding])
 
-  let yAxisScale = d3.scaleLinear().domain([0, d3.max(dataValues, (e) => {
+  yAxisScale = d3.scaleLinear().domain([0, d3.max(dataValues, (e) => {
                         return e[1]
                     })]).range([height - padding, padding ])
 }
@@ -36,7 +39,10 @@ const createBars = () => {
 }
 
 const createAxis = () => {
-
+  let xAxis = d3.axisBottom(xAxisScale);
+  svg.append('g').call(xAxis).attr("id","x-axis").attr("color", "white")
+  .attr("transform", "translate(0, " + (height-padding) + ")")
+  
 }
 
 
