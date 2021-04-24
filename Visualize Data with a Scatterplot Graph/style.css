@@ -4,6 +4,35 @@
   box-sizing: border-box;
 }
 
+h1 {
+  text-align: center;
+  color: #000000;
+  font-weight: 900;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 svg {
   background-color: black;
+  padding: 10px;
+  border: 2px solid rgb(48, 26, 26);
+  box-shadow: 4px 4px 7px rgba(36, 34, 34, 0.5);
+}
+
+#tooltip{
+  position: absolute;			
+  text-align: center;			
+  width: 120px;					
+  height: auto;					
+  padding: 3px;				
+  font: 12px sans-serif;		
+  background: rgb(13, 13, 192);		
+  color: aliceblue;	
+  border-radius: 8px;			
+  pointer-events: none;
 }
