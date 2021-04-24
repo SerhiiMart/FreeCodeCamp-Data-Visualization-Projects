@@ -36,3 +36,22 @@ svg {
   border-radius: 8px;			
   pointer-events: none;
 }
+
+.tooltip{
+  display: none;
+  background-color: #badc58;
+  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  padding: 10px;
+  z-index: 100;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.tooltip.show{
+  display: block;
+}
+
