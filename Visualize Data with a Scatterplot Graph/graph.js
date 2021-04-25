@@ -23,8 +23,8 @@ ${d[2] ? `${d[2]}` : ''}`;
   const radius = 8;
   const tooltip = document.getElementById('tooltip');
   const svg = d3.select('.main').append('svg')
-          .attr('width', width)
-          .attr('height', height);
+    .attr('width', width)
+    .attr('height', height);
 
 
 ////Work on Data

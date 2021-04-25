@@ -13,6 +13,7 @@ main {
   align-items: center;
   justify-content: center;
   position: relative;
+  background-color: turquoise;
 }
 
 h1 {
@@ -28,13 +29,13 @@ svg {
 }
 
 #tooltip {
-  background-color: #20c961;
+  background-color: #6c8086;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
   display: none;
   font-size: 14px;
   position: absolute;
   padding: 10px;
-  z-index: 100;
+  z-index: 1;
 }
 
 #tooltip.show {
@@ -48,8 +49,8 @@ svg {
 #legend {
   font-size: 12px;
   padding: 20px;
-  position: absolute;
-  top: 0;
+  position: relative;
+  justify-content: right;
   right: 0;
   text-align: right;
 }
@@ -57,8 +58,8 @@ svg {
 #legend .text {
   position: relative;
   padding-right: 25px;
-  margin: 10px;
-  min-width: 200px;
+  margin: 20px;
+  font-weight: 800;
 }
 
 #legend .circle {
