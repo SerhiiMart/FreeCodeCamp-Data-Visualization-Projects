@@ -5,7 +5,10 @@
 }
 
 body {
-  background: radial-gradient(closest-side, #3f87a6, #ebf8e1, #f69d3c);
+  background-image: url("https://www.lifewire.com/thmb/lPmBLIcXz-cm3wkwojk8PPP2YsE=/4395x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/library-b694b8c4b0334227a4d614158cc1deb6.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,42 +18,36 @@ body {
 #title, #description {
   text-align: center;
   font-weight: 800;
-  color: rgb(101, 2, 121);
+  color: black;
+  background-color: cornflowerblue;
+  margin: 2px;
 }
 
 #description {
   font-size: 18px;
 }
 
-#legend {
-  margin-top: 0;
-  transform: scaleX(-1);
+.legend {
+  position: absolute;
+  top: 20px;
+  right: 110px;
 }
 
 svg {
-  background-color: rgb(0, 0, 0);
-  padding: 10px;
-  color: white;
-  border: 2px solid rgb(48, 26, 26);
-  box-shadow: 4px 4px 7px rgba(36, 34, 34, 0.5);
+  background: none;
+  /* border: 2px solid rgb(48, 26, 26);
+  box-shadow: 4px 4px 7px rgba(36, 34, 34, 0.5); */
 }
 
 g{
   color: white;
 }
 
-rect:hover {
-  stroke: rgb(214, 7, 7);
-}
-
-rect:hover {
-  opacity: 0.2;
-}
-
 .main {
   position: relative;
+  height: 100vh;
+  /* overflow: hidden; */
 }
-
 #tooltip {
   position: absolute;
   display: none;
@@ -63,5 +60,5 @@ rect:hover {
 }
 
 #tooltip.show {
-  display: flex;
+  display: block;
 }
