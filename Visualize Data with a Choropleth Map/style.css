@@ -29,14 +29,13 @@ body {
 
 .legend {
   position: absolute;
-  top: 20px;
-  right: 110px;
+  left: -110px;
+  top: 200px;
+  transform: rotate(-90deg);
 }
 
 svg {
   background: none;
-  /* border: 2px solid rgb(48, 26, 26);
-  box-shadow: 4px 4px 7px rgba(36, 34, 34, 0.5); */
 }
 
 g{
@@ -51,14 +50,20 @@ g{
 #tooltip {
   position: absolute;
   display: none;
-  background-color: rgb(92, 235, 123);
-  border-radius: 15px;
+  width: 80px;
+  background-color: rgb(226, 240, 100);
+  border-radius: 5px;
+  margin: 5px;
   color: rgb(82, 29, 29);
-  z-index: 1;
   text-align: center;
-  opacity: 0.8;
+  transition: all .4s ease-in-out;
+}
+
+#tooltip:focus {
+  transform: scale(2.1);
 }
 
 #tooltip.show {
   display: block;
+  margin: 10px;
 }

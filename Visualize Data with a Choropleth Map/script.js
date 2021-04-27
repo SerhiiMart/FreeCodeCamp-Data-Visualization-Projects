@@ -1,9 +1,11 @@
 ////Globals
-const colors = [];
 const width = 1000;
 const height = 700;
 const tooltip = document.getElementById('tooltip');
-
+const svg = d3.select('.main').append('svg')
+.attr('width', width)
+.attr('height', height);
+const colors = [];
 
 (async function edMap() {
   const eduResp = await fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json');
@@ -22,10 +24,6 @@ const tooltip = document.getElementById('tooltip');
     colors.push(i);
   }
   
-  const svg = d3.select('.main').append('svg')
-    .attr('width', width)
-    .attr('height', height);
-  
   svg.append('g')
     .selectAll('path')
     .data(data)
@@ -39,7 +37,6 @@ const tooltip = document.getElementById('tooltip');
     .on('mouseover', (d, i) => {
       const { coordinates } = d.geometry;
       const [x, y] = coordinates[0][0];
-
       const education = educations.find(edu => edu.fips === d.id);
 
       tooltip.classList.add('show');
