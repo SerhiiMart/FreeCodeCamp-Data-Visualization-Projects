@@ -8,11 +8,13 @@ body {
   background-image: url("https://www.lifewire.com/thmb/lPmBLIcXz-cm3wkwojk8PPP2YsE=/4395x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/library-b694b8c4b0334227a4d614158cc1deb6.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  height: 100%;
+  width: auto;
 }
 
 #title, #description {
@@ -46,15 +48,16 @@ g{
   position: relative;
   height: 100vh;
   /* overflow: hidden; */
+
 }
 #tooltip {
   position: absolute;
   display: none;
-  width: 80px;
-  background-color: rgb(226, 240, 100);
-  border-radius: 5px;
+  width: 100px;
+  background-color: rgb(4, 134, 54);
+  border-radius: 10px;
   margin: 5px;
-  color: rgb(82, 29, 29);
+  color: rgb(8, 0, 0);
   text-align: center;
   transition: all .4s ease-in-out;
 }

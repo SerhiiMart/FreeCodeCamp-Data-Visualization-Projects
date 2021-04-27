@@ -10,16 +10,15 @@ const colors = [];
 (async function edMap() {
   const eduResp = await fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json');
   const countiesResp = await fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json');
-  const educations = await eduResp.json();
+  const educat = await eduResp.json();
   const counties = await countiesResp.json();
   const path = d3.geoPath();
   const data = topojson.feature(counties, counties.objects.counties).features;
-  const minEdu = d3.min(educations, edu => edu.bachelorsOrHigher);
-  const maxEdu = d3.max(educations, edu => edu.bachelorsOrHigher);
+  const minEdu = d3.min(educat, edu => edu.bachelorsOrHigher);
+  const maxEdu = d3.max(educat, edu => edu.bachelorsOrHigher);
   const step = (maxEdu - minEdu) / 8;
-  const colorsScale = d3.scaleThreshold()
-    .domain(d3.range(minEdu, maxEdu, step))
-    .range(d3.schemePurples[9]);
+  const colorsScale = d3.scaleThreshold().domain(d3.range(minEdu, maxEdu, step))
+  .range(d3.schemeYlGnBu[9]);
   for(let i=minEdu; i<=maxEdu; i+=step) {
     colors.push(i);
   }
@@ -30,14 +29,14 @@ const colors = [];
     .enter()
     .append('path')
     .attr('class', 'county')
-    .attr('fill', d => colorsScale(educations.find(edu => edu.fips === d.id).bachelorsOrHigher))
+    .attr('fill', d => colorsScale(educat.find(edu => edu.fips === d.id).bachelorsOrHigher))
     .attr('d', path)
     .attr('data-fips', d => d.id)
-    .attr('data-education', d => educations.find(edu => edu.fips === d.id).bachelorsOrHigher)
+    .attr('data-education', d => educat.find(edu => edu.fips === d.id).bachelorsOrHigher)
     .on('mouseover', (d, i) => {
       const { coordinates } = d.geometry;
       const [x, y] = coordinates[0][0];
-      const education = educations.find(edu => edu.fips === d.id);
+      const education = educat.find(edu => edu.fips === d.id);
 
       tooltip.classList.add('show');
       tooltip.style.left = x - 50 + 'px';
