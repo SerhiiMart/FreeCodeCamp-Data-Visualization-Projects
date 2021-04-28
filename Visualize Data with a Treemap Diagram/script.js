@@ -1,34 +1,35 @@
 ////Globals
 const width = 1000;
-const height = 700;
+const height = 600;
 
 const tooltip = document.getElementById('tooltip');
 const svg = d3.select('.main').append('svg')
 .attr('width', width)
 .attr('height', height);
 const treeMap = d3.treemap().size([width, height]).padding(2);
-const colors = d3.scaleOrdinal(d3.schemePaired);
+
 
 (async function movies() {
   const movieSales = await fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-data.json').then(e => e.json());
   
-  const root = d3.hierarchy(movieSales).sum(d => d.value);
+  const colors = d3.scaleOrdinal(d3.schemePaired);
+  const main = d3.hierarchy(movieSales).sum(d => d.value);
 
-  treeMap(root);
+  treeMap(main);
 
-const cell = svg.selectAll('g')
-  .data(root.leaves())
+const part = svg.selectAll('g')
+  .data(main.leaves())
   .enter().append('g')
   .attr('transform', d => `translate(${d.x0}, ${d.y0})`);
 
-const tile = cell.append('rect')
+const tile = part.append('rect')
   .attr('class', 'tile')
   .attr('data-name', d => d.data.name)
   .attr('data-category', d => d.data.category)
   .attr('data-value', d => d.data.value)
   .attr('width', d => d.x1 - d.x0)
   .attr('height', d => d.y1 - d.y0)
-  .attr('fill', d => color(d.data.category))
+  .attr('fill', d => colors(d.data.category))
   .on('mouseover', (d, i) => {
     const { name, category, value } = d.data;
     tooltip.classList.add('show');
@@ -45,7 +46,7 @@ const tile = cell.append('rect')
   tooltip.classList.remove('show');
 });
 
-cell.append('text')
+part.append('text')
   .selectAll('tspan')
   .data(d => d.data.name.split(/(?=[A-Z][^A-Z])/g))
   .enter().append('tspan')
@@ -54,28 +55,31 @@ cell.append('text')
   .attr('y', (d, i) => 15 + i * 15)
   .text(d => d)
 
-const categories = root.leaves().map(n => n.data.category).filter((item, idx, arr) => arr.indexOf(item) === idx);
+const categories = main.leaves().map(n => n.data.category).filter((item, idx, arr) => arr.indexOf(item) === idx);
 
-const blockSize = 20;
-const legendWidth = 200;
-const legendHeight = (blockSize + 2) * categories.length;
+////categories variables
+const sizeOfBlock = 20;
+const widthofLegend = 200;
+const heightofLegend = (sizeOfBlock + 10) * categories.length;
 
-const legend = d3.select('body')
+
+////Legend part
+const legend = d3.select('.main')
   .append('svg')
   .attr('id', 'legend')
-  .attr('width', legendWidth)
-  .attr('height', legendHeight)
+  .attr('width', widthofLegend)
+  .attr('height', heightofLegend)
  
 legend.selectAll('rect')
   .data(categories)
   .enter()
   .append('rect')
   .attr('class', 'legend-item')
-  .attr('fill', d => color(d))
-  .attr('x', blockSize / 2)
-  .attr('y', (_, i) => i * (blockSize + 1) + 10)
-  .attr('width', blockSize)
-  .attr('height', blockSize)
+  .attr('fill', d => colors(d))
+  .attr('x', sizeOfBlock / 2)
+  .attr('y', (_, i) => i * (sizeOfBlock + 1) + 10)
+  .attr('width', sizeOfBlock)
+  .attr('height', sizeOfBlock)
  
  legend.append('g')
     .selectAll('text')
@@ -83,7 +87,7 @@ legend.selectAll('rect')
     .enter()
     .append('text')
     .attr('fill', 'black')
-    .attr('x', blockSize * 2)
-    .attr('y', (_, i) => i * (blockSize + 1) + 25)
+    .attr('x', sizeOfBlock * 2)
+    .attr('y', (_, i) => i * (sizeOfBlock + 1) + 25)
     .text(d => d)
 })();

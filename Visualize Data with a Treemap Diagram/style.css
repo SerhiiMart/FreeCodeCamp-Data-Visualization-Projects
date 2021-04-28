@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url("https://www.lifewire.com/thmb/lPmBLIcXz-cm3wkwojk8PPP2YsE=/4395x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/library-b694b8c4b0334227a4d614158cc1deb6.jpg");
+  background-image: url("https://image.freepik.com/free-photo/cinema-concept-with-popcorn-background_23-2147989043.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -20,7 +20,7 @@ body {
   text-align: center;
   font-weight: 800;
   color: black;
-  background-color: cornflowerblue;
+  background-color: rgb(172, 16, 138);
   margin: 2px;
 }
 
@@ -28,31 +28,35 @@ body {
   font-size: 18px;
 }
 
-.legend {
+#legend {
+  display: grid;
   position: absolute;
-  left: -110px;
-  top: 200px;
-  transform: rotate(-90deg);
+  height: 170px;
+  top: 62px;
+  left: -200px;
 }
 
 svg {
   background: none;
+  border: 3px solid rgb(243, 8, 8);
+  margin: 10px;
+  height: 650px;
 }
 
-g{
-  color: white;
-}
+/* .tile {
+  height: 200px;
+  margin: 20px;
+} */
 
 .main {
   position: relative;
   height: 100vh;
   /* overflow: hidden; */
-
 }
 #tooltip {
   position: absolute;
   display: none;
-  width: 100px;
+  width: 200px;
   background-color: rgb(4, 134, 54);
   border-radius: 10px;
   margin: 5px;
@@ -67,5 +71,5 @@ g{
 
 #tooltip.show {
   display: block;
-  margin: 10px;
+  margin: 2px;
 }
