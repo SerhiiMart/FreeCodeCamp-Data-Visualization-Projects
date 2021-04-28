@@ -1,0 +1,72 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("https://www.lifewire.com/thmb/lPmBLIcXz-cm3wkwojk8PPP2YsE=/4395x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/library-b694b8c4b0334227a4d614158cc1deb6.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: auto;
+}
+
+#title, #description {
+  text-align: center;
+  font-weight: 800;
+  color: black;
+  background-color: cornflowerblue;
+  margin: 2px;
+}
+
+#description {
+  font-size: 18px;
+}
+
+.legend {
+  position: absolute;
+  left: -110px;
+  top: 200px;
+  transform: rotate(-90deg);
+}
+
+svg {
+  background: none;
+}
+
+g{
+  color: white;
+}
+
+.main {
+  position: relative;
+  height: 100vh;
+  /* overflow: hidden; */
+
+}
+#tooltip {
+  position: absolute;
+  display: none;
+  width: 100px;
+  background-color: rgb(4, 134, 54);
+  border-radius: 10px;
+  margin: 5px;
+  color: rgb(8, 0, 0);
+  text-align: center;
+  transition: all .4s ease-in-out;
+}
+
+#tooltip:focus {
+  transform: scale(2.1);
+}
+
+#tooltip.show {
+  display: block;
+  margin: 10px;
+}
